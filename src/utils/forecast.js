@@ -12,7 +12,8 @@ const forecast=(latitude,longitude,callback)=>{
             callback('unable to find location') 
         } else {
             const current=body.currently;
-            callback(undefined,body.daily.data[0].summary+' It is currenlty '+current.temperature+' degree out there.'+' There is '+current.precipProbability +'% chance of rain')
+           const {summary,temperatureMin,temperatureMax} = body.daily.data[0];
+            callback(undefined,summary+' It is currenlty '+current.temperature+' degree out there.'+' There is '+current.precipProbability +'% chance of rain. '+'The minimum temperature is '+temperatureMin +' and maximum temperature is '+temperatureMax)
         }
     })
     }
